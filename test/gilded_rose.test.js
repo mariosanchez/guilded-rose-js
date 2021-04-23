@@ -3,6 +3,7 @@ const {Shop, Item} = require("../src/gilded_rose");
 const items = [
   new Item("+5 Dexterity Vest", 10, 20), // should decrease sellIn and Quality by 1 for regular items
   new Item("Elixir of the Mongoose", 0, 7), // should decrease sellIn and Quality by 1 for regular items
+  new Item("Aged Brie", 1, 50), // an items quality should never go above 50
   new Item("Aged Brie", 2, 0), // aged brie should increase its quality when sellIn decreases
   new Item("Sulfuras, Hand of Ragnaros", 0, 80), 
   new Item("Sulfuras, Hand of Ragnaros", -1, 80),
@@ -24,6 +25,7 @@ describe("Gilded Rose", function() {
     const expectedUpdatedItems = [
       new Item("+5 Dexterity Vest", 9, 19),
       new Item("Elixir of the Mongoose", -1, 5),
+      new Item("Aged Brie", 0, 50),
       new Item("Aged Brie", 1, 1),
       new Item("Sulfuras, Hand of Ragnaros", 0, 80),
       new Item("Sulfuras, Hand of Ragnaros", -1, 80),
